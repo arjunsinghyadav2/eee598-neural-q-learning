@@ -1,0 +1,6 @@
+# Versions used for the reported results (Python 3.14.0). The extra index serves the CPU build
+# of PyTorch, so Linux installs skip the CUDA download; the script runs on the CPU only.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.10.0
+numpy==2.4.2
+matplotlib==3.10.8

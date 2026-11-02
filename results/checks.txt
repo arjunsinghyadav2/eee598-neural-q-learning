@@ -1,0 +1,150 @@
+PASS  STATES are a..h with terminal h and start a
+PASS  TRANSITIONS has one entry per nonterminal state and matches ACTIONS
+PASS  branch probabilities sum to 1 for every (s,a)
+PASS  branching actions are 0.8 intended / 0.2 alternative, forced actions 1.0
+PASS  every branch carries the edge cost of the graph of Assignment 2
+PASS  feasible_actions gives the expected labels, empty at h
+PASS  ACTION_LABELS is Ab, Ac, Ad, Ae, Af, Ag, Ah and covers every action
+PASS  FEASIBLE_PAIRS is the documented order of the 10 pairs
+PASS  PathEnv's public API is exactly reset, step and feasible_actions, and hands out copies
+PASS  empirical frequency of every (s,a) branch is within 0.03 of its probability  [worst error 0.0093]
+PASS  the realized cost matches the realized branch
+PASS  through PathEnv.step as well, every branch frequency is within 0.03 of its probability  [worst error 0.0132]
+PASS  every episode reaches h in exactly 4 steps
+PASS  every episode has a total cost in {8, 9, 11}  [[8, 9, 11]]
+PASS  step raises before the first reset
+PASS  step raises on an infeasible action
+PASS  step raises on an unknown action
+PASS  step raises after the episode has ended, whatever the action
+PASS  reset starts a new episode at a
+PASS  mask is 8 x 7, matches the feasible sets, and the h row is all False
+PASS  masked_argmin picks the best feasible action, never a more attractive infeasible one
+PASS  masked_argmin refuses a state with no feasible action
+PASS  masked_argmin stays on a feasible action if a diverged network outputs nan
+PASS  encode gives one-hot float vectors over 8 states
+PASS  exact ties split about 50/50  [first action 0.495]
+PASS  an exact tie draws from the dedicated generator, never from the global one
+PASS  masked_argmin consumes no draw without a tie
+PASS  a state with one feasible action consumes no random draw
+PASS  epsilon 0 is greedy
+PASS  epsilon 1 is uniform over the feasible actions  [first action 0.499]
+PASS  epsilon 0.5 picks the greedy action about 75% of the time  [greedy action 0.753]
+PASS  terminal transitions give y == c exactly, with no nan
+PASS  nonterminal y uses the min over feasible actions, ignoring a hugely negative infeasible output
+PASS  y is 1-D, has the shape of c and carries no gradient
+PASS  gamma scales the bootstrap only
+PASS  gamma 0 gives y == c with no inf * 0 = nan
+PASS  targets are computed under torch.no_grad
+PASS  learning_step bootstraps from the target network, not the online network  [loss 4.01303, target 4.01303, online 4.05695]
+PASS  only the output of the taken action receives gradient
+PASS  the huber loss follows its definition  [loss 0.87680, residual 2.00360]
+PASS  an unknown loss name is refused
+PASS  the loss is the mean of (y - Q)^2 over a batch of different transitions, using batch_size and gamma from the config  [loss 8.81624, by hand 8.81624]
+PASS  gradients do not accumulate across learning steps
+PASS  two hidden layers of 32 give 1575 trainable parameters  [1575]
+PASS  other hidden layouts follow the same formula
+PASS  layers are Linear(8,32), ReLU, Linear(32,32), ReLU, Linear(32,7)
+PASS  epsilon is 1 at episode 1 and 0.05 from episode 4000 on
+PASS  epsilon is linear: 1 - 0.95 * (ep - 1) / 3999
+PASS  tabular_matched has the same epsilon as the neural agent in every episode
+PASS  tabular_a2 keeps the decay submitted in Assignment 2
+PASS  epsilon can be held constant
+PASS  a new buffer is empty
+PASS  a partly filled buffer samples only its filled part, with replacement
+PASS  wrap-around overwrites the oldest transitions and holds the size at capacity
+PASS  sampling is uniform over the stored transitions and keeps each tuple together
+PASS  a batch is 1-D with the expected types
+PASS  pair counts cover the filled part
+PASS  sampling draws from the buffer's own generator, not the global one
+PASS  no learning before warm-up, then exactly one learning step per environment step
+PASS  the loop gives learning_step the environment's mask and the run's own config
+PASS  the loop acts with the online network and the epsilon of the current episode
+PASS  a short run produces the expected counts  [(280, 231, 28)]
+PASS  the assignment's configuration means 20000 transitions, 19801 learning steps, 198 target syncs
+PASS  the default configuration keeps the assignment's gamma = 1
+PASS  a warm-up the buffer can never reach, or a warm-up below 1, is refused
+PASS  training takes the network layout, capacity and learning rate from the config
+PASS  the logged epsilon follows the configured schedule, once per episode
+PASS  the replay buffer holds feasible pairs only
+PASS  every stored tuple is a real transition: (s, a, cost, s', done) of a realized branch
+PASS  logs have one row per episode and 10 Q columns
+PASS  the last q_hist row holds the final network's values in the documented order
+PASS  environment noise and exploration come from SeedSequence(seed).spawn(3)
+PASS  different seeds see different environment noise and exploration
+PASS  replay sampling starts from the third stream of SeedSequence(seed).spawn(3)
+PASS  training consumes the global generators only for the weight initialization
+PASS  target starts as an exact copy of the online network
+PASS  a learning step itself never changes the target network
+PASS  the target changes only every M learning steps  [changes after steps [10, 20, 30, 40]...]
+PASS  a sync is a hard copy of the online weights
+PASS  run reports one sync per M learning steps
+PASS  no gradient reaches the target network and its parameters are frozen
+PASS  Adam updates the online parameters only, and they receive gradient
+PASS  one Adam with torch's default settings serves the whole run, never re-created
+PASS  model-based functions work outside training
+PASS  every model-based function raises RuntimeError during train_neural
+PASS  every model-based function raises RuntimeError during run_q_learning
+PASS  the guard is released after training
+PASS  the guard is released even when training raises (try/finally)
+PASS  the neural learner names no model, reference or tabular object, no sampler and no private state of the environment
+PASS  PathEnv goes through the sampler and names no model table directly
+PASS  the tabular learner names no model or reference object
+PASS  TRANSITIONS is read only by the sampler and by guarded post-hoc functions  [lookahead, loss_noise_floor, nominal_path, step]
+PASS  training gives the same weights with the table visible only inside the sampler
+PASS  during training the sampler runs once per environment step and for nothing else  [240 and 80 calls]
+PASS  policy iteration gives V*(a) = 8.44 with policy Ab, Ae, Af  [V*(a) = 8.4400]
+PASS  V* matches pi_trace.txt of Assignment 2
+PASS  Q* matches pi_trace.txt of Assignment 2
+PASS  sweep 1 of the stochastic initial policy matches pi_trace.txt
+PASS  the reference policy covers all 7 nonterminal states
+PASS  the tabular Q table equals Assignment 2 exactly (seed 4, 300 episodes)
+PASS  the tabular episode costs equal Assignment 2 (sum and counts)
+PASS  the per-episode Q snapshot ends at the final table
+PASS  the tabular learner makes 4 updates per episode
+PASS  the reported baselines use the settings of Assignment 2 and of the matched schedule
+PASS  tabular_a2 equals Assignment 2 exactly on seeds 0-4 over all 5000 episodes  [41cb2bb33fc905a6, 873a6fe687ffe693, a13fa1df02fc774b, 3a13834a00982b9b, b947c9dd465b5adb]
+PASS  same seed twice gives an identical final-weights SHA-256  [4c36327b5e4b]
+PASS  same seed twice gives identical logs
+PASS  different seeds give different weights
+PASS  another seed first plus polluted global generators do not change a seed's hash
+PASS  evaluating between runs does not change a seed's hash
+PASS  evaluation leaves the network untouched
+PASS  a sweep task gives the same row after other work in the same process
+PASS  a spawned worker gives the same sweep row as this process
+PASS  the sweep has 24 neural and 10 tabular variants with unique names
+PASS  the sweep's seeds are held out from the reported seeds 0-4
+PASS  the sweep's Assignment 2 baselines keep the settings of Assignment 2
+PASS  every neural variant changes at most one factor of the baseline
+PASS  no_replay trains on the newest transition only
+PASS  the matched tabular variants use the neural epsilon schedule
+PASS  an --episodes override sets every variant's length and keeps schedules proportional
+PASS  the sweep summary counts optimal seeds, averages per variant and treats an unstable run as never stable
+PASS  evaluation runs 1000 episodes, all reach h, costs in {8, 9, 11}
+PASS  the statistics are mean, std with ddof 1, min, max and the normal 95% half width
+PASS  the evaluated mean of pi* agrees with the exact V*(a)  [mean 8.4290, half width 0.0432]
+PASS  neural and tabular actors of one policy give identical results on a seed's stream
+PASS  a different seed gets a different evaluation stream
+PASS  the evaluation stream differs from the training streams of the seed
+PASS  the step guard makes nontermination visible instead of hanging
+PASS  evaluate_policy draws its noise from default_rng(SeedSequence([598003, seed]))
+PASS  the rolling mean at episode k averages episodes k-99..k
+PASS  the rolling mean of a too short series is empty
+PASS  greedy_ok and first_stable_episode on a synthetic history
+PASS  optimal_frac_last_1000 and switches_last_1000 on a synthetic history
+PASS  first_stable_episode is 1 when the policy is always optimal
+PASS  first_stable_episode is null when the run ends non-optimal
+PASS  an exact tie does not count as the optimal action
+PASS  the metrics degrade gracefully when a run has fewer than 1000 episodes
+PASS  the metrics work for a single episode
+PASS  q_rmse is the root of the mean squared error over the 10 values
+PASS  the noise floor matches hand-computed variances
+PASS  nominal paths and costs follow the intended branches
+PASS  greedy_policy gives a feasible action at all 7 nonterminal states
+PASS  greedy_policy of Q* is pi*, never a more attractive infeasible action
+PASS  a new main run deletes only what an earlier main run wrote
+PASS  every method's record agrees with its saved log, the exact evaluation and the table
+PASS  the tabular records evaluate their own (here non-optimal) policy on the seed's stream
+PASS  each baseline's log is saved under its own name: matched has the neural epsilon
+PASS  the plotted rolling mean at episode k averages episodes k-99..k
+PASS  a series no longer than its rolling window lists no undrawn line in the legend
+149 checks, 0 failed, 10.0 s

@@ -1,0 +1,5 @@
+# LF everywhere, so a fresh clone of neural_q_learning.py matches script_sha256 in results.json.
+* text=auto eol=lf
+*.npz binary
+*.pdf binary
+*.png binary

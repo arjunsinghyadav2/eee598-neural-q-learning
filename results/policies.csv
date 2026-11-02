@@ -1,0 +1,16 @@
+method,seed,pi_a,pi_b,pi_c,pi_d,pi_e,pi_f,pi_g,nominal_path,nominal_cost,exact_expected_cost,gap,is_optimal
+neural,0,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+neural,1,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+neural,2,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+neural,3,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+neural,4,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_a2,0,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_a2,1,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_a2,2,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_a2,3,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_a2,4,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_matched,0,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_matched,1,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_matched,2,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_matched,3,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
+tabular_matched,4,Ab,Ae,Af,Ag,Ag,Ag,Ah,a->b->e->g->h,8,8.44,0.0,True
