@@ -147,4 +147,4 @@ PASS  the tabular records evaluate their own (here non-optimal) policy on the se
 PASS  each baseline's log is saved under its own name: matched has the neural epsilon
 PASS  the plotted rolling mean at episode k averages episodes k-99..k
 PASS  a series no longer than its rolling window lists no undrawn line in the legend
-149 checks, 0 failed, 10.0 s
+149 checks, 0 failed, 11.1 s

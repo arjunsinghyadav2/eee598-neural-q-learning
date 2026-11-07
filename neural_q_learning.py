@@ -1,7 +1,7 @@
 """
 Episodic stochastic shortest-path MDP: neural Q-learning vs. tabular Q-learning
 EEE598 Reinforcement Learning, Assignment 3
-Team 9: Chinmay Prashanth, Arjun Singh Yadav, Mohammad Ibrahim
+Team 9: Chinmay Prashanth, Arjun Singh Yadav, Muhammad Ibraheem
 
 The Q table of Assignment 2 is replaced by a feedforward network trained only
 from sampled transitions, with experience replay and a hard-copied target

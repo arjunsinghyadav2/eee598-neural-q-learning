@@ -9,7 +9,7 @@
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{pdftitle={Neural Q-Learning for an Episodic Stochastic Shortest-Path Problem},
-pdfauthor={Chinmay Prashanth, Arjun Singh Yadav, Mohammad Ibrahim}}
+pdfauthor={Chinmay Prashanth, Arjun Singh Yadav, Muhammad Ibraheem}}
 \graphicspath{{../results/}}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcommand{\code}[1]{\texttt{#1}}
@@ -20,7 +20,7 @@ pdfauthor={Chinmay Prashanth, Arjun Singh Yadav, Mohammad Ibrahim}}
 
 \title{Neural Q-Learning for an Episodic\\Stochastic Shortest-Path Problem}
 
-\author{\IEEEauthorblockN{Chinmay Prashanth, Arjun Singh Yadav, Mohammad Ibrahim}
+\author{\IEEEauthorblockN{Chinmay Prashanth, Arjun Singh Yadav, Muhammad Ibraheem}
 \IEEEauthorblockA{Team 9\\
 EEE598, Arizona State University\\
 cprashan@asu.edu, asyadav6@asu.edu, Mibrahe5@asu.edu}}
@@ -198,7 +198,7 @@ Exploration & $\varepsilon$-greedy at $a,b,c$: $1\to0.05$ over episodes 1--4000 
 Stability & no late switches on seeds 0--4 or 100--109; 8.7 without replay & 2\,/\,6 late switches on seed 3; none on seeds 100--109\\
 Reproducibility & seeded initialization, 3 streams, 1 thread; hashes repeat on one build & one generator; equals Assignment~2 bit for bit\\
 Sensitivity & lr, $\varepsilon$, layers, batch, replay, $M$, loss, length; $\pi^*$ in every variant & $\alpha$, $\varepsilon$, length; $\alpha\ge0.5$ loses $\pi^*$ on 1--2 of 10 seeds\\
-Policy and cost & $\pi^*$ on 5/5; mean $8.435\pm0.018$; Q RMSE $0.091\pm0.010$; 12.3~s &$\pi^*$ on 5/5; same eval.; Q RMSE 0.084/0.097; 0.17/0.16~s\\
+Policy and cost & $\pi^*$ on 5/5; mean $8.435\pm0.018$; Q RMSE $0.091\pm0.010$; 15.1~s &$\pi^*$ on 5/5; same eval.; Q RMSE 0.084/0.097; 0.20/0.18~s\\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -265,9 +265,10 @@ tabulate or share features; here it is a validated stepping stone, not an improv
 
 \section*{Implementation and Reproduction (README)}
 {\raggedright Code, results and report: \repo. Software: Python 3.14.0, PyTorch 2.10.0+cpu, NumPy 2.4.2, Matplotlib 3.10.8. Hardware:
-Intel Core i9-14900KF, 64~GB RAM, Windows~11; CPU only, one thread per run. Commands:
+Intel Core i9-14900KF, 64~GB RAM, Windows~11; CPU only, one thread per run, pinned to the
+performance cores. Commands:
 \code{pip~install~-r~requirements.txt}; \code{python~neural\_q\_learning.py} (checks and all
-results, $\approx$75~s);
+results, $\approx$1.5~min);
 \code{python~neural\_q\_learning.py~-{}-sweep} ($\approx$5~min, 16 workers);
 \code{python~neural\_q\_learning.py~-{}-plots-only} redraws the figures.\par}
 
@@ -280,7 +281,7 @@ every measured number comes from the linked script, which also checks them again
 policy-iteration solution.
 
 \begin{thebibliography}{9}
-\bibitem{a2} C. Prashanth, A. S. Yadav, and M. Ibrahim, ``Policy iteration and Q-learning for
+\bibitem{a2} C. Prashanth, A. S. Yadav, and M. Ibraheem, ``Policy iteration and Q-learning for
 an episodic stochastic shortest-path problem,'' EEE598 Assignment~2 report, Team~9, Arizona
 State Univ., 2026.
 \bibitem{si6} J. Si, ``Lecture 6: Finding the optimal policy through policy iteration,''

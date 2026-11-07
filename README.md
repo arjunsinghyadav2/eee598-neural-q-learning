@@ -1,6 +1,6 @@
 # EEE598 Assignment 3: Neural Q-Learning
 
-**Team 9:** Chinmay Prashanth, Arjun Singh Yadav, Mohammad Ibrahim
+**Team 9:** Chinmay Prashanth, Arjun Singh Yadav, Muhammad Ibraheem
 
 A feedforward network replaces the Q table of our Assignment 2 learner on the same episodic
 stochastic shortest-path problem (states a to h, start a, terminal h, gamma = 1). It is trained
@@ -12,6 +12,9 @@ report is [`report/report.pdf`](report/report.pdf).
 
 - Python 3.14.0, PyTorch 2.10.0+cpu, NumPy 2.4.2, Matplotlib 3.10.8
 - Intel Core i9-14900KF, 64 GB RAM, Windows 11; CPU only, one thread per training run
+- The reported times come from a run pinned to the performance cores (logical CPUs 0-15).
+  Under Windows' default scheduling the run can land on the slower efficiency cores and take
+  longer; the learned weights and every other result are identical either way.
 
 ## How to run
 
@@ -22,7 +25,12 @@ python neural_q_learning.py
 
 This runs 149 self-checks and stops if any fails. It then trains the network and both tabular
 baselines on seeds 0-4 (5000 episodes each), evaluates every greedy policy on 1000 episodes,
-and writes the figures and tables to `results/` next to the script. It takes about 75 s.
+and writes the figures and tables to `results/` next to the script. It takes about 1.5 minutes.
+To pin it to the performance cores as for the reported times, run in PowerShell:
+
+```
+$p = Start-Process python neural_q_learning.py -NoNewWindow -PassThru; $p.ProcessorAffinity = 0xFFFF; $p.WaitForExit()
+```
 
 Other modes:
 
@@ -40,7 +48,7 @@ python neural_q_learning.py --checks-only   # self-checks only
 | Exact expected cost | 8.44 = V*(a) | 8.44 | 8.44 |
 | 1000-episode evaluation, mean over seeds | 8.435 ± 0.018 | identical | identical |
 | RMSE of Q against Q* | 0.091 ± 0.010 | 0.084 ± 0.023 | 0.097 ± 0.021 |
-| Training time per seed | 12.3 s | 0.17 s | 0.16 s |
+| Training time per seed | 15.1 s | 0.20 s | 0.18 s |
 
 All methods of a seed are evaluated on the same random stream (common random numbers), so
 methods that learned the same policy have identical evaluation statistics.
