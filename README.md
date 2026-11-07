@@ -57,7 +57,8 @@ methods that learned the same policy have identical evaluation statistics.
 Rerunning reproduces the final-weight SHA-256 hashes in `results.json` bit for bit on the same
 machine and library build. Other CPUs or builds may differ in the last floating-point digits.
 
-## Disclosure
+## Disclosure of AI assistance
 
-Claude Code (Anthropic) wrote the implementation and its self-checks, ran the experiments and
-drafted the report at the team's direction.
+We acknowledge the use of generative AI: Claude Code (Anthropic) wrote the implementation and
+its self-checks, ran the experiments and drafted the report at the team's direction. The team
+tested the code and verified the reported results.
